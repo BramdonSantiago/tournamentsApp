@@ -1,0 +1,9 @@
+<app-header-component></app-header-component>
+
+<div class="tournaments-page">
+    <div class="container">
+        <div class="tournaments-list">
+            <app-singular-tournament-component *ngFor="let tournament of tournaments" [tournament]="tournament"></app-singular-tournament-component>
+        </div>
+    </div>
+</div>

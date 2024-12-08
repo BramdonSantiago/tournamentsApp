@@ -1,0 +1,48 @@
+@import '../../../vars.sass'
+
+.tournament-detail
+    padding-top: 4rem
+    padding-bottom: 4rem
+
+.content-detail-tournament
+    width: 100%
+    min-height: 80dvh
+    border-radius: 25px
+    background-size: cover
+    background-position: top center
+    background-repeat: no-repeat
+    padding: 1.5rem 3rem
+    position: relative
+    &::before
+        content: ''
+        transition: all 0.6 ease
+        position: absolute
+        top: 0
+        right: 0
+        width: 50%
+        height: 50%
+        border-top: 3px solid $secondary
+        border-right: 3px solid $secondary
+        border-top-right-radius: 25px
+        pointer-events: none
+
+h1
+    font-size: 3rem
+
+.description
+    color: rgba($white, .8)
+
+
+.date-content
+    align-self: flex-end
+.date 
+    font-size: 2.250rem
+    color: #676e8c
+    margin-bottom: 0
+
+.info-bottom
+    margin-top: 4rem
+    .info-grid
+        display: flex
+        justify-content: space-between
+        align-items: center

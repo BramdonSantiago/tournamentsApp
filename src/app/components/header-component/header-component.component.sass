@@ -1,0 +1,66 @@
+@import '../../../vars.sass'
+    
+header
+    position: sticky
+    top: 0
+    left: 0
+    width: 100%
+    z-index: 9
+    padding: 1rem 0
+    background-color: $primary
+    // box-shadow: 0 0 20px 0 rgba($secondary, 0.1)
+
+.header-grid
+    display: flex
+    justify-content: space-between
+    align-items: center
+    gap: 5rem
+
+
+nav 
+    display: flex
+    align-items: center
+    gap: 5rem
+    a
+        cursor: pointer
+        text-decoration: none
+        color: $white
+        font-weight: bold
+        padding-top: 1rem
+        padding-bottom: 1rem
+        border-bottom: 2px solid transparent
+        transition: border-color 0.6s ease
+        &:hover
+            border-color: $secondary
+
+.logo
+    color: $secondary
+    font-size: 48px
+    font-weight: bold
+    text-transform: uppercase
+    display: flex
+    align-items: center
+    gap: 10px
+    .bracket
+        font-size: 60px
+        font-weight: normal
+    .name 
+        color: $white
+        animation: glow 2s infinite
+
+
+@keyframes glow
+    0%, 100%
+        text-shadow: 0 0 5px #25edaf, 0 0 10px #25edaf
+    50%
+        text-shadow: 0 0 15px #25edaf, 0 0 30px #25edaf
+
+
+.btn 
+    display: flex
+    align-items: center
+    justify-content: center
+    font-weight: bold
+    padding: 7px 1rem
+    i
+        margin-right: 10px

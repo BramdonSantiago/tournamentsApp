@@ -1,0 +1,22 @@
+<div class="singular-tournament">
+    <div class="img-tournament">
+        <img src="assets/images/tournament-{{tournament.id}}.jpg" alt="">
+        <div class="badge">{{ tournament.mode }}</div>
+    </div>
+    <div class="singular-tournament-body">
+        <div class="name-and-date">
+            <div class="name-date">
+                <h3>{{ tournament.name }}</h3>
+                <p class="date"><time><i class="fa-solid fa-calendar-days"></i>{{ tournament.date }}</time></p>
+            </div>
+            <div>
+                <button routerLink='/tournament-edit-form/{{ tournament.id }}' type="button" class="btn btn-outline-primary btn-edit-1">
+                    Editar
+                </button>
+            </div>
+        </div>
+        <p class="location"><i class="fa-solid fa-location-dot"></i>{{ tournament.location }}</p>
+        <p class="price">{{ tournament.price }}</p>
+        <a routerLink='/tournament-detail/{{ tournament.id }}' class="btn btn-primary">Ver detalle</a>
+    </div>
+</div>

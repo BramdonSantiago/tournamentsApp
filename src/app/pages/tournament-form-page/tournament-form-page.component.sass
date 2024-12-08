@@ -1,0 +1,109 @@
+@import '../../../vars.sass'
+    
+.tournament-form
+    padding-top: 4rem
+    padding-bottom: 4rem
+
+form 
+    background-color: $gray-1
+    width: 100%
+    min-height: 50dvh
+    border-radius: 25px
+    padding: 1.5rem 3rem
+    background: linear-gradient(145deg, #1e1e2e, #101018)
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4)
+    position: relative
+    &::before
+        content: ''
+        transition: all 0.6 ease
+        position: absolute
+        top: 0
+        right: 0
+        width: 50%
+        height: 50%
+        border-top: 3px solid $secondary
+        border-right: 3px solid $secondary
+        border-top-right-radius: 25px
+        pointer-events: none
+    h1 
+        text-align: center
+        color:  $secondary
+        margin-bottom: 4rem
+
+.grid-form
+    display: flex
+    justify-content: space-between
+    align-items: stretch
+    flex-wrap: wrap
+    gap: 1rem
+    .col-12
+        width: 100%
+    .col-6 
+        width: calc(50% - 1rem)
+    .col-4 
+        width: calc(33.33% - 1rem)
+
+.lbl-form
+    display: block
+    margin-bottom: 10px
+
+input[type='text'], input[type='date'], select, textarea
+    width: 100%
+    padding: 1rem 10px
+    background-color: $gray-1
+    // background-color: transparent
+    border: 1px solid #2f2f3a
+    outline: none
+    font-size: 1rem
+    color: $white
+    transition: box-shadow 0.3s ease
+    &:focus
+        box-shadow: 0 5px 0 0 $secondary
+
+
+textarea
+    min-height: 200px
+    max-height: 200px
+    resize: none
+
+.btns-add-rules
+    margin-top: 0.5rem
+    display: flex
+    gap: 1rem
+    .btn
+        padding: 7px 1rem
+        font-size: 0.75rem
+        color: $white
+        color: $gray-1
+        i 
+            margin-right: 7px
+        &.btn-add-rule
+            background-color: transparent
+            color: $white
+            padding: 0
+
+
+.content-btn-form 
+    margin-top: 1.5rem
+    text-align: center
+
+
+.image-upload
+    width: 200px
+    height: 200px
+    border: 1px solid #2f2f3a
+    background-color: $gray-1
+    border-radius: 16px
+    overflow: hidden
+    position: relative
+    input
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        opacity: 0
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover

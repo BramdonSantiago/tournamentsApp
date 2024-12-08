@@ -1,0 +1,39 @@
+<app-header-component></app-header-component>
+
+<div class="tournament-detail">
+    <div class="container">
+        <div class="content-detail-tournament" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0,.7) 25%, rgba(0, 0, 0, .8) 50%, rgba(0, 0, 0, .9) 75%, rgba(0,0,0, 1) 90%), url('assets/images/tournament-{{tournament.id}}.jpg');">
+            <h1>{{ tournament.name }}</h1>
+            <p class="description">{{ tournament.description }}</p>
+                <div class="info-bottom">
+                    <div class="info-grid">
+                        <div>
+                            <p class="number-players">{{ tournament.numberPlayers }} jugadores</p>
+                            <p class="duration">{{ tournament.time }} minutos dandole con toda</p>
+                            <p class="duration">Premio: {{ tournament.reward }}</p>
+                        </div>
+                        <div>
+                            <p class="price">Modalidad: {{ tournament.mode }}</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> {{ tournament.location }}</p>
+                            <p class="price">Precio inscripción: {{ tournament.price }}</p>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div>
+                            <h4>Reglas</h4>
+                            <div class="rules">
+                                <ul>
+                                    <li>No hack</li>
+                                    <li>Se permite todo tipo de armas, excepto camping</li>
+                                    <li>Si no te presentas después de 10 minutos de iniciar la partida serás descalificado</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="date-content">
+                            <p class="date"><time><i class="fa-solid fa-calendar-days"></i> {{ tournament.date }}</time></p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
