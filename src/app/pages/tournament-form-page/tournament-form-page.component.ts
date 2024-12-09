@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { HeaderComponentComponent } from '../../components/header-component/header-component.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormGroup, Validators, ValidationErrors, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, Validators, ValidationErrors, FormControl, FormArray, AbstractControl } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { TournamentsService } from '../../services/tournaments.service';
 import { Tournament } from '../../models/tournament';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tournament-form-page',
@@ -13,11 +14,21 @@ import { Tournament } from '../../models/tournament';
   styleUrl: './tournament-form-page.component.sass'
 })
 export class TournamentFormPageComponent {
-  imageUrl: string | ArrayBuffer | null = null;
+  imageUrl: any;
   rules: string[] = [''];
 
+  file: any;
+  urlFile!: string;
+
+  isUpdateMode: boolean = false;
+
+  tournament!: any;
+
+  idTournament!: number;
+
   tournamentForm = new FormGroup({
-    imgInput: new FormControl('', [Validators.required]),
+    // imgInput: new FormControl('', [Validators.required]),
+    imgInput: new FormControl('', this.imageValidator.bind(this)),
     nameInput: new FormControl('', [Validators.required, Validators.minLength(10)]),
     locationInput: new FormControl('', Validators.required),
     numberPlayersInput: new FormControl('', Validators.required),
@@ -30,23 +41,62 @@ export class TournamentFormPageComponent {
   });
 
 
-  constructor(private cdr: ChangeDetectorRef, private tournamentsService: TournamentsService) {}
+  constructor(private cdr: ChangeDetectorRef, private tournamentsService: TournamentsService, private route: ActivatedRoute) {
+
+  }
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.isUpdateMode = params.has('id');
+      this.idTournament = Number(this.route.snapshot.paramMap.get('id'));
+      if (this.idTournament) {
+        this.tournamentsService.getTournamentById(this.idTournament).subscribe((data) => {
+          this.tournament = data;
+        });
+        console.log(this.tournament);
+        this.imageUrl = this.tournament.image
+        this.tournamentForm.patchValue({
+          nameInput: this.tournament.name,
+          locationInput: this.tournament.location,
+          numberPlayersInput: this.tournament.numberPlayers,
+          timeInput: this.tournament.time,
+          rewardInput: this.tournament.reward,
+          priceInput: this.tournament.price,
+          modeInput: this.tournament.mode,
+          dateInput: this.tournament.date,
+          descriptionInput: this.tournament.description,
+        });
+      }
+    });
+  }
+
+  imageValidator(control: AbstractControl): ValidationErrors | null {
+    console.log(this.imageUrl);
+    if (!this.imageUrl && !control.value) {
+      return { required: true };
+    }
+    return null;
+  }
+
+  
 
 
-  onFileSelected(event: Event) {
+  onFileSelected(event: any) {
     const input = event.target as HTMLInputElement;
     if (input?.files?.[0]) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.imageUrl = reader.result; // Asigna la URL de la imagen a la variable
+        this.imageUrl = reader.result;
       };
       reader.readAsDataURL(input.files[0]);
     }
+    this.file = event.target.files[0];
   }
 
   addRule() {
-    this.rules.push(''); // Agrega un nuevo input
-    this.cdr.detectChanges(); // Fuerza la actualización de la vista
+    this.rules.push('');
+    console.log(this.rules);
+    this.cdr.detectChanges();
   }
 
   removeLastRule() {
@@ -60,9 +110,9 @@ export class TournamentFormPageComponent {
     if (!this.tournamentForm.valid) {
       this.getInvalidControls();
     } else {
-      const transformedFormValue: Tournament  = {
-        id: 0,
-        image: this.tournamentForm.value.imgInput || '',
+        const transformedFormValue: Tournament  = {
+        id: this.idTournament,
+        image: this.urlFile || '',
         name: this.tournamentForm.value.nameInput || '',
         location: this.tournamentForm.value.locationInput || '',
         numberPlayers: this.tournamentForm.value.numberPlayersInput || '',
@@ -72,12 +122,21 @@ export class TournamentFormPageComponent {
         mode: this.tournamentForm.value.modeInput || '',
         date: this.tournamentForm.value.dateInput || '',
         description: this.tournamentForm.value.descriptionInput || '',
+        // rules: this.rules || '',
       };
+
+      if (this.isUpdateMode) {
+        this.tournamentsService.updateTournament(transformedFormValue);
+        setTimeout(() => {
+          this.tournamentForm.reset();
+        }, 1000);
+      } else {
+        this.tournamentsService.addTournament(transformedFormValue);
+        setTimeout(() => {
+          this.tournamentForm.reset();
+        }, 1000);
+      }
       
-      this.tournamentsService.addTournament(transformedFormValue);
-      setTimeout(() => {
-        this.tournamentForm.reset();
-      }, 1000);
     }
   }
 
@@ -86,5 +145,39 @@ export class TournamentFormPageComponent {
       control.markAllAsTouched();
     })
   }
+
+
+  uploadImage() {
+    if (!this.tournamentForm.valid) {
+      this.getInvalidControls();
+      return; // Agregar return para evitar seguir ejecutando el código si el formulario no es válido
+    }
+  
+    console.log("Estoy aqui");
+  
+    // Determinar qué archivo usar
+    const fileToUpload = this.file || this.imageUrl;
+    
+    if (!fileToUpload) {
+      console.error('No hay archivo para subir');
+      return; // Agregar return en caso de que no haya archivo
+    }
+  
+    const formData = new FormData();
+    formData.append('file', fileToUpload);
+    formData.append('upload_preset', 'tournaments_preset');
+  
+    this.tournamentsService.uploadImage(formData).subscribe(
+      (response: any) => {
+        console.log('Imagen subida', response);
+        this.urlFile = response.secure_url;
+        this.onSubmit();
+      },
+      (error) => {
+        console.error('Error al subir la imagen', error);
+      }
+    );
+  }
+  
 
 }

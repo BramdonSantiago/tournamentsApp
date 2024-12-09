@@ -9,5 +9,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header-component.component.sass'
 })
 export class HeaderComponentComponent {
+  isDisabledStats = true;
+  isDisabledOrganizers = true;
 
 }

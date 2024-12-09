@@ -2,14 +2,14 @@
 
 <div class="tournament-detail">
     <div class="container">
-        <div class="content-detail-tournament" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0,.7) 25%, rgba(0, 0, 0, .8) 50%, rgba(0, 0, 0, .9) 75%, rgba(0,0,0, 1) 90%), url('assets/images/tournament-{{tournament.id}}.jpg');">
+        <div class="content-detail-tournament" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0,.7) 25%, rgba(0, 0, 0, .8) 50%, rgba(0, 0, 0, .9) 75%, rgba(0,0,0, 1) 90%), url('{{tournament.image}}');">
             <h1>{{ tournament.name }}</h1>
             <p class="description">{{ tournament.description }}</p>
                 <div class="info-bottom">
                     <div class="info-grid">
                         <div>
                             <p class="number-players">{{ tournament.numberPlayers }} jugadores</p>
-                            <p class="duration">{{ tournament.time }} minutos dandole con toda</p>
+                            <p class="duration">{{ tournament.time }}</p>
                             <p class="duration">Premio: {{ tournament.reward }}</p>
                         </div>
                         <div>
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div class="date-content">
-                            <p class="date"><time><i class="fa-solid fa-calendar-days"></i> {{ tournament.date }}</time></p>
+                            <p class="date"><time><i class="fa-solid fa-calendar-days"></i> {{ tournament.date | date: 'dd/MM/yyyy' }}</time></p>
                         </div>
                     </div>
                 </div>

@@ -2,25 +2,26 @@
 
 <div class="tournament-form">
     <div class="container">
-        <form [formGroup]="tournamentForm" (ngSubmit)="onSubmit()">
-            <h1>Crear torneo</h1>
+        <form [formGroup]="tournamentForm" (ngSubmit)="uploadImage()">
+            <h1>{{ isUpdateMode ? 'Editar torneo' : 'Crear torneo' }}</h1>
             <div class="grid-form">
                 <div class="col-12">
                     <label class="lbl-form">
                         Imagen
                     </label>
                     <div class="image-upload">
-                        <input type="file" formControlName="imgInput" (change)="onFileSelected($event)" accept="image/jpeg, image/png">
+                        <input type="file" formControlName="imgInput" (change)="onFileSelected($event)"
+                            accept="image/jpeg, image/png">
                         @if (imageUrl) {
-                            <img [src]="imageUrl" alt="">
+                        <img [src]="imageUrl" alt="">
                         }
                     </div>
                     @if (tournamentForm.get('imgInput')?.invalid && tournamentForm.get('imgInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('imgInput')?.errors?.['required']) {
-                                <p>Imagen es obligatorio</p>
-                            }
-                        </div>
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('imgInput')?.errors?.['required']) {
+                        <p>Imagen es obligatorio</p>
+                        }
+                    </div>
                     }
                 </div>
                 <div class="col-6">
@@ -29,14 +30,14 @@
                     </label>
                     <input type="text" formControlName="nameInput" placeholder="Nombre">
                     @if (tournamentForm.get('nameInput')?.invalid && tournamentForm.get('nameInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('nameInput')?.errors?.['required']) {
-                                <p>El nombre es obligatorio</p>
-                            }
-                            @if (tournamentForm.get('nameInput')?.errors?.['minlength']) {
-                                <p>El nombre debe tener al menos 10 caracteres</p>
-                            }
-                        </div>
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('nameInput')?.errors?.['required']) {
+                        <p>El nombre es obligatorio</p>
+                        }
+                        @if (tournamentForm.get('nameInput')?.errors?.['minlength']) {
+                        <p>El nombre debe tener al menos 10 caracteres</p>
+                        }
+                    </div>
                     }
                 </div>
                 <div class="col-6">
@@ -50,11 +51,11 @@
                         <option value="Monterrey">Monterrey</option>
                     </select>
                     @if (tournamentForm.get('locationInput')?.invalid && tournamentForm.get('locationInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('locationInput')?.errors?.['required']) {
-                                <p>La ubicación es obligatorio</p>
-                            }
-                        </div>
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('locationInput')?.errors?.['required']) {
+                        <p>La ubicación es obligatorio</p>
+                        }
+                    </div>
                     }
                 </div>
                 <div class="col-6">
@@ -62,12 +63,13 @@
                         Número de jugadores
                     </label>
                     <input type="text" formControlName="numberPlayersInput" placeholder="Número de jugadores">
-                    @if (tournamentForm.get('numberPlayersInput')?.invalid && tournamentForm.get('numberPlayersInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('numberPlayersInput')?.errors?.['required']) {
-                                <p>Número de jugadores es obligatorio</p>
-                            }
-                        </div>
+                    @if (tournamentForm.get('numberPlayersInput')?.invalid &&
+                    tournamentForm.get('numberPlayersInput')?.touched) {
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('numberPlayersInput')?.errors?.['required']) {
+                        <p>Número de jugadores es obligatorio</p>
+                        }
+                    </div>
                     }
                 </div>
                 <div class="col-6">
@@ -76,11 +78,11 @@
                     </label>
                     <input type="text" formControlName="timeInput" placeholder="Tiempo torneo">
                     @if (tournamentForm.get('timeInput')?.invalid && tournamentForm.get('timeInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('timeInput')?.errors?.['required']) {
-                                <p>Tiempo torneo es obligatorio</p>
-                            }
-                        </div>
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('timeInput')?.errors?.['required']) {
+                        <p>Tiempo torneo es obligatorio</p>
+                        }
+                    </div>
                     }
                 </div>
                 <div class="col-12">
@@ -89,17 +91,17 @@
                     </label>
                     <input type="text" formControlName="rewardInput" placeholder="Premio">
                     @if (tournamentForm.get('rewardInput')?.invalid && tournamentForm.get('rewardInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('rewardInput')?.errors?.['required']) {
-                                <p>Premio es obligatorio</p>
-                            }
-                            @if (tournamentForm.get('rewardInput')?.errors?.['minlength']) {
-                                <p>El premio debe tener al menos 40 caracteres</p>
-                            }
-                        </div>
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('rewardInput')?.errors?.['required']) {
+                        <p>Premio es obligatorio</p>
+                        }
+                        @if (tournamentForm.get('rewardInput')?.errors?.['minlength']) {
+                        <p>El premio debe tener al menos 40 caracteres</p>
+                        }
+                    </div>
                     }
                 </div>
-                <div class="col-12">
+                <!-- <div class="col-12">
                     <label class="lbl-form">Reglas</label>
                     <div *ngFor="let rule of rules; let i = index;">
                         <input type="text" [placeholder]="'Regla ' + (i + 1)"
@@ -115,18 +117,18 @@
                             Eliminar regla
                         </button>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-4">
                     <label class="lbl-form">
                         Precio
                     </label>
                     <input formControlName="priceInput" type="text" placeholder="Precio">
                     @if (tournamentForm.get('priceInput')?.invalid && tournamentForm.get('priceInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('priceInput')?.errors?.['required']) {
-                                <p>Precio es obligatorio</p>
-                            }
-                        </div>
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('priceInput')?.errors?.['required']) {
+                        <p>Precio es obligatorio</p>
+                        }
+                    </div>
                     }
                 </div>
                 <div class="col-4">
@@ -139,11 +141,11 @@
                         <option value="En linea">En linea</option>
                     </select>
                     @if (tournamentForm.get('modeInput')?.invalid && tournamentForm.get('modeInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('modeInput')?.errors?.['required']) {
-                                <p>Modalidad es obligatorio</p>
-                            }
-                        </div>
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('modeInput')?.errors?.['required']) {
+                        <p>Modalidad es obligatorio</p>
+                        }
+                    </div>
                     }
                 </div>
                 <div class="col-4">
@@ -152,11 +154,11 @@
                     </label>
                     <input formControlName="dateInput" type="date">
                     @if (tournamentForm.get('dateInput')?.invalid && tournamentForm.get('dateInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('dateInput')?.errors?.['required']) {
-                                <p>Fecha es obligatorio</p>
-                            }
-                        </div>
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('dateInput')?.errors?.['required']) {
+                        <p>Fecha es obligatorio</p>
+                        }
+                    </div>
                     }
                 </div>
                 <div class="col-12">
@@ -164,15 +166,16 @@
                         Descripción
                     </label>
                     <textarea formControlName="descriptionInput"></textarea>
-                    @if (tournamentForm.get('descriptionInput')?.invalid && tournamentForm.get('descriptionInput')?.touched) {
-                        <div class="invalid-feedback">
-                            @if (tournamentForm.get('descriptionInput')?.errors?.['required']) {
-                                <p>Descripción es obligatorio</p>
-                            }
-                            @if (tournamentForm.get('descriptionInput')?.errors?.['minlength']) {
-                                <p>La descripción debe tener al menos 400 caracteres</p>
-                            }
-                        </div>
+                    @if (tournamentForm.get('descriptionInput')?.invalid &&
+                    tournamentForm.get('descriptionInput')?.touched) {
+                    <div class="invalid-feedback">
+                        @if (tournamentForm.get('descriptionInput')?.errors?.['required']) {
+                        <p>Descripción es obligatorio</p>
+                        }
+                        @if (tournamentForm.get('descriptionInput')?.errors?.['minlength']) {
+                        <p>La descripción debe tener al menos 400 caracteres</p>
+                        }
+                    </div>
                     }
                 </div>
             </div>

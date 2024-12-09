@@ -9,8 +9,8 @@
                 </div>
                 <nav>
                     <a routerLink='/tournaments'>Torneos</a>
-                    <a>Estadísticas</a>
-                    <a>Organizadores</a>
+                    <a [ngClass]="{'disabled': isDisabledStats}">Estadísticas</a>
+                    <a [ngClass]="{'disabled': isDisabledOrganizers}">Organizadores</a>
                 </nav>
             </div>
             <div>

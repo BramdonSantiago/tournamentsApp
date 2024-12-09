@@ -5,5 +5,8 @@
         <div class="tournaments-list">
             <app-singular-tournament-component *ngFor="let tournament of tournaments" [tournament]="tournament"></app-singular-tournament-component>
         </div>
+        @if (tournaments.length === 0) {
+            <p class="tournaments-empty">No hay torneos, comienza creando uno.</p>
+        }
     </div>
 </div>

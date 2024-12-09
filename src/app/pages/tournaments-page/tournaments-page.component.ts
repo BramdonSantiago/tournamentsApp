@@ -37,12 +37,21 @@ export class TournamentsPageComponent {
   // ];
   tournaments: Tournament[] = [];
 
+  file: any;
+
   constructor(private tournamentsService: TournamentsService) {}
 
   ngOnInit(): void {
     this.tournamentsService.getTournaments().subscribe(data => {
       this.tournaments = data;
     });
+
+
+    
+
   }
 
+  
+
+  
 }

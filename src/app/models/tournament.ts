@@ -10,4 +10,5 @@ export interface Tournament {
     mode: string;
     date: string;
     description: string;
+    // rules: Array<String>
 }
