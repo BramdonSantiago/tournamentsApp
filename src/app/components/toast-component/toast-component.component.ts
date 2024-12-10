@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-toast-component',
@@ -7,6 +8,13 @@ import { Component, Input } from '@angular/core';
   styleUrl: './toast-component.component.sass'
 })
 export class ToastComponentComponent {
-  @Input() showToast: boolean = false;
-  @Input() message: string = '';
+  message: string = '';
+  showToast: boolean = false;
+
+  constructor(private toastService: ToastService) {}
+
+  ngOnInit() {
+    this.toastService.message$.subscribe((msg) => (this.message = msg));
+    this.toastService.isVisible$.subscribe((visible) => (this.showToast = visible));
+  }
 }

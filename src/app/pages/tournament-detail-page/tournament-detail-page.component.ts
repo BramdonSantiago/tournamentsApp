@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-tournament-detail-page',
@@ -18,7 +19,7 @@ export class TournamentDetailPageComponent {
   // tournament!: Tournament;
   tournament: any;
   
-  constructor(private tournamentsService: TournamentsService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private tournamentsService: TournamentsService, private route: ActivatedRoute, private router: Router, private toastService: ToastService) { }
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -35,6 +36,7 @@ export class TournamentDetailPageComponent {
     if (decision) {
       this.tournamentsService.deleteTournament(tournamentId);
       setTimeout(() => {
+        this.toastService.showToast('El torneo se ha eliminado correctamente');
         this.router.navigate(['/tournaments']);
       }, 1000);
     }

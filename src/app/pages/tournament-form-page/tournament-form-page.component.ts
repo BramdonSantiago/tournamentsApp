@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { HeaderComponentComponent } from '../../components/header-component/header-component.component';
-import { ToastComponentComponent } from '../../components/toast-component/toast-component.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormGroup, Validators, ValidationErrors, FormControl, FormArray, AbstractControl } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import { TournamentsService } from '../../services/tournaments.service';
 import { Tournament } from '../../models/tournament';
 import { ActivatedRoute } from '@angular/router';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-tournament-form-page',
-  imports: [HeaderComponentComponent, ToastComponentComponent, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [HeaderComponentComponent, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './tournament-form-page.component.html',
   styleUrl: './tournament-form-page.component.sass'
 })
@@ -47,7 +47,7 @@ export class TournamentFormPageComponent {
   });
 
 
-  constructor(private cdr: ChangeDetectorRef, private tournamentsService: TournamentsService, private route: ActivatedRoute) {
+  constructor(private cdr: ChangeDetectorRef, private tournamentsService: TournamentsService, private route: ActivatedRoute, private toastService: ToastService) {
 
   }
 
@@ -133,22 +133,14 @@ export class TournamentFormPageComponent {
       if (this.isUpdateMode) {
         this.tournamentsService.updateTournament(transformedFormValue);
         setTimeout(() => {
-          this.messageToast = "Se ha editado el torneo correctamente";
-          this.showToast = true
-          setTimeout(() => {
-            this.showToast = false
-          }, 6000);
+          this.toastService.showToast('El torneo se ha actualizado correctamente');
           this.tournamentForm.reset();
           this.imageUrl = "";
         }, 1000);
       } else {
         this.tournamentsService.addTournament(transformedFormValue);
         setTimeout(() => {
-          this.messageToast = "Se ha creado el torneo correctamente";
-          this.showToast = true
-          setTimeout(() => {
-            this.showToast = false
-          }, 6000);
+          this.toastService.showToast('El torneo se ha creado correctamente');
           this.tournamentForm.reset();
           this.imageUrl = "";
         }, 1000);
