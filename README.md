@@ -1,4 +1,4 @@
-Para comenzar el proyecto conseguir la version 22 (22.10.0) del node https://nodejs.org/en/
+Para iniciar el proyecto, asegúrate de instalar la versión 22 (22.10.0) de Node.js. Puedes descargarla desde el sitio oficial: Node.js
 
 Y el CLI de Angular con 
 ```bash
