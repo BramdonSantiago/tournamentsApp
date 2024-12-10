@@ -1,4 +1,4 @@
-Para iniciar el proyecto, asegúrate de instalar la versión 22 (22.10.0) de Node.js. Puedes descargarla desde el sitio oficial: Node.js
+Para iniciar el proyecto, asegúrate de instalar la versión 22 (22.10.0) de Node.js. Puedes descargarla desde el sitio oficial de Node.js: https://nodejs.org/en/
 
 Y el CLI de Angular con 
 ```bash
@@ -16,6 +16,8 @@ ng serve
 ```
 
 La aplicación es una plataforma para la gestión de torneos, que permite crear, editar y eliminar torneos de forma sencilla. Los datos se almacenan localmente utilizando el localStorage del navegador. Además, la app está desarrollada con un enfoque modular, utilizando componentes reutilizables para facilitar su mantenimiento y escalabilidad. Es una app hecha tanto para dispositivos móviles como para escritorio.
+
+Para trabajar con los estilos de la aplicación se trabaja en formato syntax Sass indented https://sass--lang-com.translate.goog/documentation/syntax/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc 
 
 La app permite cargar una imagen representativa del torneo, la cual se almacena de forma segura en una plataforma de gestión de medios configurada previamente, optimizando su entrega y accesibilidad.
 
