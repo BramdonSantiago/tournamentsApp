@@ -7,8 +7,6 @@
 .tournaments-list
     display: grid
     gap: 1rem
-    grid-template-columns: repeat(4, 1fr)
-
 
 
 .tournaments-empty
@@ -18,3 +16,20 @@
     min-height: 50dvh
     text-align: center
     font-size: 1.250rem
+
+
+@media(min-width: 576px) 
+    .tournaments-list
+        grid-template-columns: repeat(2, 1fr)
+
+
+@media(min-width: 992px) 
+    .tournaments-list
+        grid-template-columns: repeat(3, 1fr)
+
+
+@media(min-width: 1200px) 
+    .tournaments-list
+        grid-template-columns: repeat(4, 1fr)
+
+

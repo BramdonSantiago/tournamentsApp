@@ -56,6 +56,12 @@ export class TournamentsService {
     this.tournamentsSubject.next(this.tournaments);
   }
 
+  deleteTournament(id: number): void {
+    this.tournaments = this.tournaments.filter(t => t.id !== id);
+    this.saveToLocalStorage();
+    this.tournamentsSubject.next(this.tournaments);
+  }
+
   uploadImage(formData: FormData): Observable<any> {
     return this.http.post(`https://api.cloudinary.com/v1_1/dobbxfe78/image/upload`, formData);
   }

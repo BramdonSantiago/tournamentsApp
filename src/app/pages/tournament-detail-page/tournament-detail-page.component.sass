@@ -11,7 +11,7 @@
     background-size: cover
     background-position: top center
     background-repeat: no-repeat
-    padding: 1.5rem 3rem
+    padding: 1.5rem 2rem
     position: relative
     animation: zoomIn 3s ease forwards
     &::before
@@ -30,6 +30,17 @@
 h1
     font-size: 3rem
     word-wrap: break-word
+    line-height: 1
+
+.actions 
+    position: absolute
+    top: 30px
+    right: 20px
+    display: flex
+    flex-direction: column
+    gap: 0.5rem
+    button
+        color: $gray-1
 
 .description
     color: rgba($white, .8)
@@ -45,13 +56,20 @@ h1
 
 .info-bottom
     margin-top: 4rem
+
+@media(min-width: 768px)
+    .content-detail-tournament
+        padding: 1.5rem 3rem
     .info-grid
         display: flex
         justify-content: space-between
         align-items: center
-
-
-
+        .players-time-and-reward
+            width: 50%
+    .actions 
+        top: 30px
+        right: 40px
+        flex-direction: row
 
 @keyframes zoomIn 
     0%

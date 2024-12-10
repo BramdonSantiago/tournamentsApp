@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponentComponent } from '../../components/header-component/header-component.component';
+import { ToastComponentComponent } from '../../components/toast-component/toast-component.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormGroup, Validators, ValidationErrors, FormControl, FormArray, AbstractControl } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tournament-form-page',
-  imports: [HeaderComponentComponent, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [HeaderComponentComponent, ToastComponentComponent, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './tournament-form-page.component.html',
   styleUrl: './tournament-form-page.component.sass'
 })
@@ -26,8 +27,13 @@ export class TournamentFormPageComponent {
 
   idTournament!: number;
 
+  rulesText: string = '';
+  savedRules: string[] = [];
+
+  showToast: boolean = false;
+  messageToast: string = "";
+
   tournamentForm = new FormGroup({
-    // imgInput: new FormControl('', [Validators.required]),
     imgInput: new FormControl('', this.imageValidator.bind(this)),
     nameInput: new FormControl('', [Validators.required, Validators.minLength(10)]),
     locationInput: new FormControl('', Validators.required),
@@ -71,7 +77,7 @@ export class TournamentFormPageComponent {
   }
 
   imageValidator(control: AbstractControl): ValidationErrors | null {
-    console.log(this.imageUrl);
+    // console.log(this.imageUrl);
     if (!this.imageUrl && !control.value) {
       return { required: true };
     }
@@ -101,8 +107,8 @@ export class TournamentFormPageComponent {
 
   removeLastRule() {
     if (this.rules.length > 1) {
-      this.rules.pop(); // Elimina el último input
-      this.cdr.detectChanges(); // Fuerza la actualización de la vista
+      this.rules.pop();
+      this.cdr.detectChanges();
     }
   }
 
@@ -122,18 +128,29 @@ export class TournamentFormPageComponent {
         mode: this.tournamentForm.value.modeInput || '',
         date: this.tournamentForm.value.dateInput || '',
         description: this.tournamentForm.value.descriptionInput || '',
-        // rules: this.rules || '',
       };
 
       if (this.isUpdateMode) {
         this.tournamentsService.updateTournament(transformedFormValue);
         setTimeout(() => {
+          this.messageToast = "Se ha editado el torneo correctamente";
+          this.showToast = true
+          setTimeout(() => {
+            this.showToast = false
+          }, 6000);
           this.tournamentForm.reset();
+          this.imageUrl = "";
         }, 1000);
       } else {
         this.tournamentsService.addTournament(transformedFormValue);
         setTimeout(() => {
+          this.messageToast = "Se ha creado el torneo correctamente";
+          this.showToast = true
+          setTimeout(() => {
+            this.showToast = false
+          }, 6000);
           this.tournamentForm.reset();
+          this.imageUrl = "";
         }, 1000);
       }
       
@@ -150,17 +167,17 @@ export class TournamentFormPageComponent {
   uploadImage() {
     if (!this.tournamentForm.valid) {
       this.getInvalidControls();
-      return; // Agregar return para evitar seguir ejecutando el código si el formulario no es válido
+      return;
     }
   
-    console.log("Estoy aqui");
+    // console.log("Estoy aqui");
   
     // Determinar qué archivo usar
     const fileToUpload = this.file || this.imageUrl;
     
     if (!fileToUpload) {
       console.error('No hay archivo para subir');
-      return; // Agregar return en caso de que no haya archivo
+      return;
     }
   
     const formData = new FormData();
@@ -177,6 +194,10 @@ export class TournamentFormPageComponent {
         console.error('Error al subir la imagen', error);
       }
     );
+  }
+
+  updateRules() {
+    this.savedRules = this.rulesText.split('\n').filter(rule => rule.trim() !== '');
   }
   
 

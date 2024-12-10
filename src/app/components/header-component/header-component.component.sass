@@ -1,5 +1,5 @@
 @import '../../../vars.sass'
-    
+
 header
     position: sticky
     top: 0
@@ -14,39 +14,122 @@ header
     display: flex
     justify-content: space-between
     align-items: center
-    gap: 5rem
 
-
-nav 
-    display: flex
-    align-items: center
-    gap: 5rem
-    a
-        cursor: pointer
-        text-decoration: none
-        color: $white
-        font-weight: bold
-        padding-top: 1rem
-        padding-bottom: 1rem
-        border-bottom: 2px solid transparent
-        transition: border-color 0.6s ease
-        &:hover
-            border-color: $secondary
 
 .logo
     color: $secondary
-    font-size: 48px
+    font-size: 1.250rem
     font-weight: bold
     text-transform: uppercase
     display: flex
     align-items: center
     gap: 10px
     .bracket
-        font-size: 60px
+        font-size: 1rem
         font-weight: normal
-    .name 
+    .name
         color: $white
         animation: glow 2s infinite
+
+.btn
+    display: flex
+    align-items: center
+    justify-content: center
+    font-weight: bold
+    padding: 7px 1rem
+    font-size: 0.75rem
+    i
+        margin-right: 10px
+
+.nav-top-mobile
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 4rem
+    p 
+        font-size: 1.4rem
+        margin-bottom: 0
+
+.nav
+    position: fixed
+    padding: 1rem 1.5rem
+    top: 0
+    left: -100%
+    visibility: hidden
+    opacity: 0
+    width: 85dvw
+    height: 100dvh
+    background-color: $gray-1
+    display: flex
+    flex-direction: column
+    align-items: center
+    transition: all 0.6s ease
+    &.show-nav 
+        left: 0
+        visibility: visible
+        opacity: 1
+    .nav-options
+        display: flex
+        flex-direction: column
+        width: 100%
+        gap: 2rem
+        a 
+            text-decoration: none
+            color: $white
+            font-weight: bold
+            font-size: 1.250rem
+
+.disabled
+    pointer-events: none
+    opacity: 0.5
+
+
+@media(min-width: 576px)
+    .nav
+        width: 65dvw
+@media(min-width: 768px)
+    .nav
+        width: 50dvw
+@media(min-width: 992px)
+    .nav
+        width: 40dvw
+    .logo
+        font-size: 32px
+        .bracket
+            font-size: 42px
+
+@media(min-width: 1200px)
+    .menu-hamburguer, .nav-top-mobile
+        display: none
+
+    .header-grid
+        gap: 5rem
+
+    .logo
+        font-size: 48px
+        .bracket
+            font-size: 60px
+
+    .btn
+        font-size: 1rem
+
+    .nav
+        all: unset
+        .nav-options
+            display: flex
+            align-items: center
+            flex-direction: row
+            gap: 5rem
+            a
+                font-size: 1rem
+                cursor: pointer
+                padding-top: 1rem
+                padding-bottom: 1rem
+                border-bottom: 2px solid transparent
+                transition: border-color 0.6s ease
+                &:hover
+                    border-color: $secondary
 
 
 @keyframes glow
@@ -54,20 +137,3 @@ nav
         text-shadow: 0 0 5px #25edaf, 0 0 10px #25edaf
     50%
         text-shadow: 0 0 15px #25edaf, 0 0 30px #25edaf
-
-
-.btn 
-    display: flex
-    align-items: center
-    justify-content: center
-    font-weight: bold
-    padding: 7px 1rem
-    i
-        margin-right: 10px
-
-
-
-
-.disabled
-    pointer-events: none
-    opacity: 0.5

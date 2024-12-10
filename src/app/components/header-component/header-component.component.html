@@ -1,17 +1,32 @@
 <header>
     <div class="container">
         <div class="header-grid">
+            <div (click)="showNav()" class="menu-hamburguer">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22" height="22" viewBox="0,0,256,256">
+                    <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M0,9v2h50v-2zM0,24v2h50v-2zM0,39v2h50v-2z"></path></g></g>
+                </svg>
+            </div>
             <div class="header-grid">
                 <div routerLink='/tournaments' class="logo">
                     <span class="bracket">[</span>
                     <span class="name">GameWars</span>
                     <span class="bracket">]</span>
                 </div>
-                <nav>
-                    <a routerLink='/tournaments'>Torneos</a>
-                    <a [ngClass]="{'disabled': isDisabledStats}">Estadísticas</a>
-                    <a [ngClass]="{'disabled': isDisabledOrganizers}">Organizadores</a>
-                </nav>
+                <div class="nav" [class.show-nav]="showNavOptions">
+                    <div class="nav-top-mobile">
+                        <p>Menu de navegación</p>
+                        <div (click)="showNav()">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0,0,256,256">
+                                <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M7.71875,6.28125l-1.4375,1.4375l17.28125,17.28125l-17.28125,17.28125l1.4375,1.4375l17.28125,-17.28125l17.28125,17.28125l1.4375,-1.4375l-17.28125,-17.28125l17.28125,-17.28125l-1.4375,-1.4375l-17.28125,17.28125z"></path></g></g>
+                            </svg>
+                        </div>
+                    </div>
+                    <nav class="nav-options">
+                        <a routerLink='/tournaments'>Torneos</a>
+                        <a [ngClass]="{'disabled': isDisabledStats}">Estadísticas</a>
+                        <a [ngClass]="{'disabled': isDisabledOrganizers}">Organizadores</a>
+                    </nav>
+                </div>
             </div>
             <div>
                 <a routerLink='/tournament-create-form' class="btn btn-outline-primary">

@@ -3,11 +3,15 @@
 <div class="tournament-detail">
     <div class="container">
         <div class="content-detail-tournament" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0,.7) 25%, rgba(0, 0, 0, .8) 50%, rgba(0, 0, 0, .9) 75%, rgba(0,0,0, 1) 90%), url('{{tournament.image}}');">
+            <div class="actions">
+                <button type="button" routerLink='/tournament-edit-form/{{ tournament.id }}'><i class="fa-solid fa-pencil"></i></button>
+                <button type="button" (click)="tournamentDelete(tournament.id)"><i class="fa-solid fa-trash"></i></button>
+            </div>
             <h1>{{ tournament.name }}</h1>
             <p class="description">{{ tournament.description }}</p>
                 <div class="info-bottom">
                     <div class="info-grid">
-                        <div>
+                        <div class="players-time-and-reward">
                             <p class="number-players">{{ tournament.numberPlayers }} jugadores</p>
                             <p class="duration">{{ tournament.time }}</p>
                             <p class="duration">Premio: {{ tournament.reward }}</p>
@@ -23,9 +27,7 @@
                             <h4>Reglas</h4>
                             <div class="rules">
                                 <ul>
-                                    <li>No hack</li>
-                                    <li>Se permite todo tipo de armas, excepto camping</li>
-                                    <li>Si no te presentas después de 10 minutos de iniciar la partida serás descalificado</li>
+                                    <li *ngFor="let rule of tournament.rules">{{ rule }}</li>
                                 </ul>
                             </div>
                         </div>

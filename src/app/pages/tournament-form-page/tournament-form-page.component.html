@@ -85,6 +85,23 @@
                     </div>
                     }
                 </div>
+                <!-- <div class="col-12">
+                    <label for="lbl-form">
+                        Reglas
+                    </label>
+                    <textarea formControlName="rulesInput" [(ngModel)]="rulesText" (input)="updateRules()"></textarea>
+                    @if (tournamentForm.get('rulesInput')?.invalid &&
+                    tournamentForm.get('rulesInput')?.touched) {
+                        <div class="invalid-feedback">
+                            @if (tournamentForm.get('rulesInput')?.errors?.['required']) {
+                            <p>Reglas es obligatorio</p>
+                            }
+                            @if (tournamentForm.get('rulesInput')?.errors?.['minlength']) {
+                            <p>Las reglas deben tener al menos 100 caracteres</p>
+                            }
+                        </div>
+                    }
+                </div> -->
                 <div class="col-12">
                     <label class="lbl-form">
                         Premio
@@ -185,3 +202,6 @@
         </form>
     </div>
 </div>
+
+
+<app-toast-component [showToast]="showToast" [message]="messageToast"></app-toast-component>

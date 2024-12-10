@@ -12,4 +12,10 @@ export class HeaderComponentComponent {
   isDisabledStats = true;
   isDisabledOrganizers = true;
 
+  showNavOptions: boolean = false;
+
+
+  showNav() {
+    this.showNavOptions = !this.showNavOptions;
+  }
 }
