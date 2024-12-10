@@ -21,6 +21,8 @@ La app permite cargar una imagen representativa del torneo, la cual se almacena 
 
 Es un proyecto Angular 19.
 
+Salu✌️.
+
 # TournamentsApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
