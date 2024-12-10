@@ -1,8 +1,15 @@
--Para comenzar el proyecto la versión del node debe ser la 22 (22.10.0)
--npm install
--ng serve
+-Para comenzar el proyecto conseguir la version 22 (22.10.0) del node https://nodejs.org/en/
 
-Es un proyecto Angular 19.
+Instalar dependencias con
+```bash
+npm install
+```
+Y luego iniciar la app con
+```bash
+ng serve
+```
+
+-Es un proyecto Angular 19.
 
 # TournamentsApp
 
