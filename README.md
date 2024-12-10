@@ -15,7 +15,7 @@ Y luego iniciar la app con
 ng serve
 ```
 
-La aplicación es una plataforma para la gestión de torneos, que permite crear, editar y eliminar torneos de forma sencilla. Los datos se almacenan localmente utilizando el localStorage del navegador. Además, la app está desarrollada con un enfoque modular, utilizando componentes reutilizables para facilitar su mantenimiento y escalabilidad.
+La aplicación es una plataforma para la gestión de torneos, que permite crear, editar y eliminar torneos de forma sencilla. Los datos se almacenan localmente utilizando el localStorage del navegador. Además, la app está desarrollada con un enfoque modular, utilizando componentes reutilizables para facilitar su mantenimiento y escalabilidad. Es una app hecha tanto para dispositivos móviles como para escritorio.
 
 La app permite cargar una imagen representativa del torneo, la cual se almacena de forma segura en una plataforma de gestión de medios configurada previamente, optimizando su entrega y accesibilidad.
 
