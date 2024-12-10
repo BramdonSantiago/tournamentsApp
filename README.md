@@ -15,12 +15,12 @@ Y luego iniciar la app con
 ng serve
 ```
 
-Es un proyecto Angular 19.
-
 La aplicación es una app de torneos, en la cual se puede crear, editar o eliminar los torneos.
 Funciona por medio del localStorage para hacer el almacenamiento de los datos.
 
 La app permite cargar una imagen representativa del torneo, la cual se almacena de forma segura en una plataforma de gestión de medios configurada previamente, optimizando su entrega y accesibilidad.
+
+Es un proyecto Angular 19.
 
 # TournamentsApp
 
