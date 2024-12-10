@@ -1,15 +1,21 @@
--Para comenzar el proyecto conseguir la version 22 (22.10.0) del node https://nodejs.org/en/
+Para comenzar el proyecto conseguir la version 22 (22.10.0) del node https://nodejs.org/en/
+
+Y el CLI de Angular con 
+```bash
+npm install -g @angular/cli@latest
+```
 
 Instalar dependencias con
 ```bash
 npm install
 ```
+
 Y luego iniciar la app con
 ```bash
 ng serve
 ```
 
--Es un proyecto Angular 19.
+Es un proyecto Angular 19.
 
 # TournamentsApp
 
