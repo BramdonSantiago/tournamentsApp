@@ -18,6 +18,8 @@ import { ToastService } from '../../services/toast.service';
 export class TournamentDetailPageComponent {
   // tournament!: Tournament;
   tournament: any;
+
+  modalShow: boolean = false;
   
   constructor(private tournamentsService: TournamentsService, private route: ActivatedRoute, private router: Router, private toastService: ToastService) { }
 
@@ -30,15 +32,15 @@ export class TournamentDetailPageComponent {
     }
   }
 
-  tournamentDelete(tournamentId: number) {
-    let decision = confirm("¿Estás seguro de que quieres eliminar el torneo?");
+  showModal() {
+    this.modalShow = !this.modalShow;
+  }
 
-    if (decision) {
-      this.tournamentsService.deleteTournament(tournamentId);
-      setTimeout(() => {
-        this.toastService.showToast('El torneo se ha eliminado correctamente');
-        this.router.navigate(['/tournaments']);
-      }, 1000);
-    }
+  tournamentDelete(tournamentId: number) {
+    this.tournamentsService.deleteTournament(tournamentId);
+    setTimeout(() => {
+      this.toastService.showToast('El torneo se ha eliminado correctamente');
+      this.router.navigate(['/tournaments']);
+    }, 1000);
   }
 }

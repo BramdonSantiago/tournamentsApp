@@ -88,3 +88,39 @@ h1
         -o-transform: scale(1)
         filter: blur(0)
         -webkit-filter: blur(0)
+
+dialog
+    position: fixed
+    top: 0
+    left: 0
+    width: 100dvw
+    height: 100dvh
+    background-color: rgba($black, 0.5)
+    backdrop-filter: blur(5px)
+    .modal-content 
+        margin-left: 0
+        margin-right: 0
+        position: fixed
+        top: 50%
+        left: 50%
+        width: 40%
+        transform: translate(-50%, -50%)
+        background-color: $gray-1
+        color: $white
+        // border: 3px solid $secondary
+        border: 3px solid #2f2f3a
+        padding: 1.5rem 4rem
+        text-align: center
+        border-radius: 25px
+        .title-modal
+            font-size: 2rem
+            margin-top: 0
+            margin-bottom: 4rem
+        .btns-actions
+            margin-top: 4rem
+            display: flex
+            gap: 1rem
+            justify-content: center
+            align-items: stretch
+            .btn
+                min-width: 135px

@@ -5,7 +5,7 @@
         <div class="content-detail-tournament" style="background-image: linear-gradient(180deg, rgba(0, 0, 0, .6) 0%, rgba(0, 0, 0,.7) 25%, rgba(0, 0, 0, .8) 50%, rgba(0, 0, 0, .9) 75%, rgba(0,0,0, 1) 90%), url('{{tournament.image}}');">
             <div class="actions">
                 <button type="button" routerLink='/tournament-edit-form/{{ tournament.id }}'><i class="fa-solid fa-pencil"></i></button>
-                <button type="button" (click)="tournamentDelete(tournament.id)"><i class="fa-solid fa-trash"></i></button>
+                <button type="button" (click)="showModal()"><i class="fa-solid fa-trash"></i></button>
             </div>
             <h1>{{ tournament.name }}</h1>
             <p class="description">{{ tournament.description }}</p>
@@ -39,3 +39,16 @@
         </div>
     </div>
 </div>
+
+@if (modalShow) {
+    <dialog open>
+        <div class="modal-content">
+            <h5 class="title-modal">¿Eliminar el torneo?</h5>
+            <p>Esta acción no podrá ser revertida más tarde.</p>
+            <div class="btns-actions">
+                <button (click)="showModal()" class="btn btn-outline-primary">Cancelar</button>
+                <button (click)="tournamentDelete(tournament.id)" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </dialog>
+}
