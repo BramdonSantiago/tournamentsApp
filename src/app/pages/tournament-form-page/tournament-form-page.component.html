@@ -169,7 +169,7 @@
                     <label class="lbl-form">
                         Fecha
                     </label>
-                    <input formControlName="dateInput" type="date">
+                    <input formControlName="dateInput" type="date" mwlFlatpickr>
                     @if (tournamentForm.get('dateInput')?.invalid && tournamentForm.get('dateInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('dateInput')?.errors?.['required']) {
@@ -195,7 +195,11 @@
                     </div>
                     }
                 </div>
+                <!-- <div class="col-12">
+                    <input type="text" mwlFlatpickr  />
+                </div> -->
             </div>
+
             <div class="content-btn-form">
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </div>

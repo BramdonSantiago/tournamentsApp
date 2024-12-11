@@ -7,14 +7,17 @@ import { TournamentsService } from '../../services/tournaments.service';
 import { Tournament } from '../../models/tournament';
 import { ActivatedRoute } from '@angular/router';
 import { ToastService } from '../../services/toast.service';
+import { FlatpickrDirective } from 'angularx-flatpickr';
 
 @Component({
   selector: 'app-tournament-form-page',
-  imports: [HeaderComponentComponent, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [HeaderComponentComponent, CommonModule, FormsModule, ReactiveFormsModule, FlatpickrDirective],
   templateUrl: './tournament-form-page.component.html',
   styleUrl: './tournament-form-page.component.sass'
 })
 export class TournamentFormPageComponent {
+  selectedDate: Date | null = null
+
   imageUrl: any;
   rules: string[] = [''];
 
