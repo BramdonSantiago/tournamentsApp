@@ -16,6 +16,9 @@ import { FlatpickrDirective } from 'angularx-flatpickr';
   styleUrl: './tournament-form-page.component.sass'
 })
 export class TournamentFormPageComponent {
+  // minDate: string = new Date().toISOString().split('T')[0];
+  minDate: string = new Date(new Date().setDate(new Date().getDate() + 30)).toISOString().split('T')[0];
+
   selectedDate: Date | null = null
 
   imageUrl: any;
