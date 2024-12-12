@@ -59,6 +59,7 @@ export class TournamentFormPageComponent {
   }
 
   ngOnInit() {
+    // AQUÍ BUSCO SI ES PARA EDITAR
     this.route.paramMap.subscribe(params => {
       this.isUpdateMode = params.has('id');
       this.idTournament = Number(this.route.snapshot.paramMap.get('id'));
@@ -83,6 +84,7 @@ export class TournamentFormPageComponent {
       }
     });
 
+    // ACÁ PARA GUARDAR Y RECOGER LA DATA DEL FORMULARIO NO ENVIADO DEL LOCALSTORAGE
     const savedDataLocalStorage = localStorage.getItem(this.localStorageForm);
     if (savedDataLocalStorage) {
       this.tournamentForm.patchValue(JSON.parse(savedDataLocalStorage));
@@ -103,7 +105,7 @@ export class TournamentFormPageComponent {
   }
 
 
-  removeDataLocalStorage() {
+  removeDataFormLocalStorage() {
     localStorage.removeItem(this.localStorageForm);
   }
 
@@ -166,6 +168,7 @@ export class TournamentFormPageComponent {
           this.toastService.showToast('El torneo se ha creado correctamente');
           this.tournamentForm.reset();
           this.imageUrl = "";
+          this.removeDataFormLocalStorage();
         }, 1000);
       }
       
