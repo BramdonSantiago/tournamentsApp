@@ -64,7 +64,7 @@ export class TournamentFormPageComponent {
       this.isUpdateMode = params.has('id');
       this.idTournament = Number(this.route.snapshot.paramMap.get('id'));
       if (this.idTournament) {
-        this.removeDataLocalStorage();
+        this.removeDataFormLocalStorage();
         this.tournamentsService.getTournamentById(this.idTournament).subscribe((data) => {
           this.tournament = data;
         });
@@ -84,7 +84,7 @@ export class TournamentFormPageComponent {
       }
     });
 
-    // ACÁ PARA GUARDAR Y RECOGER LA DATA DEL FORMULARIO NO ENVIADO DEL LOCALSTORAGE
+    // ACÁ PARA GUARDAR Y RECOGER LA DATA DEL LOCALSTORAGE DEL FORMULARIO NO ENVIADO
     const savedDataLocalStorage = localStorage.getItem(this.localStorageForm);
     if (savedDataLocalStorage) {
       this.tournamentForm.patchValue(JSON.parse(savedDataLocalStorage));
