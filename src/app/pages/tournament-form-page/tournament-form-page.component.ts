@@ -16,7 +16,8 @@ import { FlatpickrDirective } from 'angularx-flatpickr';
   styleUrl: './tournament-form-page.component.sass'
 })
 export class TournamentFormPageComponent {
-  // minDate: string = new Date().toISOString().split('T')[0];
+  localStorageForm: string = "localStorageForm";
+
   minDate: string = new Date(new Date().setDate(new Date().getDate() + 30)).toISOString().split('T')[0];
 
   selectedDate: Date | null = null
@@ -62,6 +63,7 @@ export class TournamentFormPageComponent {
       this.isUpdateMode = params.has('id');
       this.idTournament = Number(this.route.snapshot.paramMap.get('id'));
       if (this.idTournament) {
+        this.removeDataLocalStorage();
         this.tournamentsService.getTournamentById(this.idTournament).subscribe((data) => {
           this.tournament = data;
         });
@@ -80,7 +82,17 @@ export class TournamentFormPageComponent {
         });
       }
     });
+
+    const savedDataLocalStorage = localStorage.getItem(this.localStorageForm);
+    if (savedDataLocalStorage) {
+      this.tournamentForm.patchValue(JSON.parse(savedDataLocalStorage));
+    }
+    this.tournamentForm.valueChanges.subscribe((formData) => {
+      localStorage.setItem(this.localStorageForm, JSON.stringify(formData));
+    });
+
   }
+  
 
   imageValidator(control: AbstractControl): ValidationErrors | null {
     // console.log(this.imageUrl);
@@ -88,6 +100,11 @@ export class TournamentFormPageComponent {
       return { required: true };
     }
     return null;
+  }
+
+
+  removeDataLocalStorage() {
+    localStorage.removeItem(this.localStorageForm);
   }
 
   
