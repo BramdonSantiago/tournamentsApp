@@ -4,7 +4,6 @@ import { CanActivateFn } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-
   const protectedRoute: boolean = true;
 
   if (protectedRoute) {
@@ -13,21 +12,3 @@ export const authGuard: CanActivateFn = (route, state) => {
   }
   return true;
 };
-
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class authGuard implements CanActivate {
-//   protectedRoute: boolean = true; 
-
-//   constructor(private router: Router) {}
-
-//   canActivate(): boolean {
-//     if (this.protectedRoute) {
-//       this.router.navigate(['/tournaments']);
-//       return true;
-//     }
-//     return false;
-//   }
-// }
