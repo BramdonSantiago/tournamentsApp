@@ -19,7 +19,7 @@
                     @if (tournamentForm.get('imgInput')?.invalid && tournamentForm.get('imgInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('imgInput')?.errors?.['required']) {
-                        <p>Imagen es obligatorio</p>
+                            <p>Imagen es obligatorio</p>
                         }
                     </div>
                     }
@@ -32,10 +32,10 @@
                     @if (tournamentForm.get('nameInput')?.invalid && tournamentForm.get('nameInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('nameInput')?.errors?.['required']) {
-                        <p>El nombre es obligatorio</p>
+                            <p>El nombre es obligatorio</p>
                         }
                         @if (tournamentForm.get('nameInput')?.errors?.['minlength']) {
-                        <p>El nombre debe tener al menos 10 caracteres</p>
+                            <p>El nombre debe tener al menos 10 caracteres</p>
                         }
                     </div>
                     }
@@ -53,7 +53,7 @@
                     @if (tournamentForm.get('locationInput')?.invalid && tournamentForm.get('locationInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('locationInput')?.errors?.['required']) {
-                        <p>La ubicación es obligatorio</p>
+                            <p>La ubicación es obligatorio</p>
                         }
                     </div>
                     }
@@ -62,12 +62,18 @@
                     <label class="lbl-form">
                         Número de jugadores
                     </label>
-                    <input type="text" formControlName="numberPlayersInput" placeholder="Número de jugadores">
+                    <input type="text" formControlName="numberPlayersInput" maxlength="3" (keydown)="allowOnlyNumbers($event)" placeholder="Número de jugadores">
                     @if (tournamentForm.get('numberPlayersInput')?.invalid &&
                     tournamentForm.get('numberPlayersInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('numberPlayersInput')?.errors?.['required']) {
-                        <p>Número de jugadores es obligatorio</p>
+                            <p>Número de jugadores es obligatorio</p>
+                        }
+                        @if (tournamentForm.get('numberPlayersInput')?.errors?.['pattern']) {
+                            <p>Solo se permiten números</p>
+                        }
+                        @if (tournamentForm.get('numberPlayersInput')?.errors?.['maxlength']) {
+                            <p>Solo se permiten 3 caracteres como máximo</p>
                         }
                     </div>
                     }
@@ -80,7 +86,7 @@
                     @if (tournamentForm.get('timeInput')?.invalid && tournamentForm.get('timeInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('timeInput')?.errors?.['required']) {
-                        <p>Tiempo torneo es obligatorio</p>
+                            <p>Tiempo torneo es obligatorio</p>
                         }
                     </div>
                     }
@@ -110,10 +116,10 @@
                     @if (tournamentForm.get('rewardInput')?.invalid && tournamentForm.get('rewardInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('rewardInput')?.errors?.['required']) {
-                        <p>Premio es obligatorio</p>
+                            <p>Premio es obligatorio</p>
                         }
                         @if (tournamentForm.get('rewardInput')?.errors?.['minlength']) {
-                        <p>El premio debe tener al menos 40 caracteres</p>
+                            <p>El premio debe tener al menos 40 caracteres</p>
                         }
                     </div>
                     }
@@ -143,7 +149,7 @@
                     @if (tournamentForm.get('priceInput')?.invalid && tournamentForm.get('priceInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('priceInput')?.errors?.['required']) {
-                        <p>Precio es obligatorio</p>
+                            <p>Precio es obligatorio</p>
                         }
                     </div>
                     }
@@ -160,7 +166,7 @@
                     @if (tournamentForm.get('modeInput')?.invalid && tournamentForm.get('modeInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('modeInput')?.errors?.['required']) {
-                        <p>Modalidad es obligatorio</p>
+                            <p>Modalidad es obligatorio</p>
                         }
                     </div>
                     }
@@ -173,7 +179,7 @@
                     @if (tournamentForm.get('dateInput')?.invalid && tournamentForm.get('dateInput')?.touched) {
                     <div class="invalid-feedback">
                         @if (tournamentForm.get('dateInput')?.errors?.['required']) {
-                        <p>Fecha es obligatorio</p>
+                            <p>Fecha es obligatorio</p>
                         }
                     </div>
                     }

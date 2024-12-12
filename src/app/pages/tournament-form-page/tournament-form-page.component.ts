@@ -44,7 +44,7 @@ export class TournamentFormPageComponent {
     imgInput: new FormControl('', this.imageValidator.bind(this)),
     nameInput: new FormControl('', [Validators.required, Validators.minLength(10)]),
     locationInput: new FormControl('', Validators.required),
-    numberPlayersInput: new FormControl('', Validators.required),
+    numberPlayersInput: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/), Validators.maxLength(3)]),
     timeInput: new FormControl('', Validators.required),
     rewardInput: new FormControl('', [Validators.required, Validators.minLength(40)]),
     priceInput: new FormControl('', Validators.required),
@@ -216,6 +216,14 @@ export class TournamentFormPageComponent {
 
   updateRules() {
     this.savedRules = this.rulesText.split('\n').filter(rule => rule.trim() !== '');
+  }
+
+  allowOnlyNumbers(event: KeyboardEvent): void {
+    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete'];
+  
+    if (!/^\d$/.test(event.key) && !allowedKeys.includes(event.key)) {
+      event.preventDefault();
+    }
   }
   
 
