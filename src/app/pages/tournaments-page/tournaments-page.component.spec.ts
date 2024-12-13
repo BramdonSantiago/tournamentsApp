@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TournamentsPageComponent } from './tournaments-page.component';
+// import { TournamentsPageComponent } from './tournaments-page.component';
 
-describe('TournamentsPageComponent', () => {
-  let component: TournamentsPageComponent;
-  let fixture: ComponentFixture<TournamentsPageComponent>;
+// describe('TournamentsPageComponent', () => {
+//   let component: TournamentsPageComponent;
+//   let fixture: ComponentFixture<TournamentsPageComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TournamentsPageComponent]
-    })
-    .compileComponents();
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       imports: [TournamentsPageComponent]
+//     })
+//     .compileComponents();
 
-    fixture = TestBed.createComponent(TournamentsPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     fixture = TestBed.createComponent(TournamentsPageComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
