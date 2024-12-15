@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HeaderComponentComponent } from '../../components/header-component/header-component.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormGroup, Validators, ValidationErrors, FormControl, FormArray, AbstractControl } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
@@ -11,7 +10,7 @@ import { FlatpickrDirective } from 'angularx-flatpickr';
 
 @Component({
   selector: 'app-tournament-form-page',
-  imports: [HeaderComponentComponent, CommonModule, FormsModule, ReactiveFormsModule, FlatpickrDirective],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, FlatpickrDirective],
   templateUrl: './tournament-form-page.component.html',
   styleUrl: './tournament-form-page.component.sass'
 })

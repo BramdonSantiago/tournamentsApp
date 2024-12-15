@@ -25,6 +25,10 @@ Es un proyecto Angular 19.
 
 Salu✌️.
 
+<img src="https://drive.google.com/uc?export=view&id=165VPFQkocVGMBUQ12lVYxuovfTPV0pOL" style="width: 100%;">
+<img src="https://drive.google.com/uc?export=view&id=1hKvDkgHolMCOg40rP7ZhcLummFH6UIRB" style="width: 100%;">
+<img src="https://drive.google.com/uc?export=view&id=1HBGSnPkbAyArv3P8areStNh8yKsnnlmN" style="width: 100%;">
+
 # TournamentsApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.

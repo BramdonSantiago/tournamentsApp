@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HeaderComponentComponent } from '../../components/header-component/header-component.component';
 import { ActivatedRoute } from '@angular/router';
 import { TournamentsService } from '../../services/tournaments.service';
 import { Tournament } from '../../models/tournament';
@@ -11,7 +10,7 @@ import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-tournament-detail-page',
-  imports: [HeaderComponentComponent, DatePipe, CommonModule, RouterModule],
+  imports: [DatePipe, CommonModule, RouterModule],
   templateUrl: './tournament-detail-page.component.html',
   styleUrl: './tournament-detail-page.component.sass'
 })

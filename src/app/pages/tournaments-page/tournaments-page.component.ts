@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponentComponent } from '../../components/header-component/header-component.component';
 import { SingularTournamentComponentComponent } from '../../components/singular-tournament-component/singular-tournament-component.component';
 import { TournamentsService } from '../../services/tournaments.service';
 import { Tournament } from '../../models/tournament';
@@ -8,7 +7,7 @@ import { Tournament } from '../../models/tournament';
 @Component({
   selector: 'app-tournaments-page',
   standalone: true,
-  imports: [CommonModule, HeaderComponentComponent, SingularTournamentComponentComponent],
+  imports: [CommonModule, SingularTournamentComponentComponent],
   templateUrl: './tournaments-page.component.html',
   styleUrl: './tournaments-page.component.sass'
 })
